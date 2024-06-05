@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta charset="ISO-8859-1">
+    <title>院系管理系统</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="container">
+    <h1>院系管理</h1>
+    <hr>
+    <h2>新增院系</h2>
+
+    <form action="#" th:action="@{/saveYx}" th:object="${yx}" method="POST">
+        <input type="text" th:field="*{addr}" placeholder="地址" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{name}" placeholder="院系姓名" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{num}" placeholder="院系号" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{people}" placeholder="院系人数" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{zn}" placeholder="院系主管姓名" class="form-control mb-4 col-4">
+
+        <button type="submit" class="btn btn-info col-2"> 保存</button>
+    </form>
+
+    <hr>
+
+    <a th:href="@{/yxindex}"> 回到院系列表</a>
+</div>
+</body>
+
+</html>

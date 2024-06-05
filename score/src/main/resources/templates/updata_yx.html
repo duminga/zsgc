@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta charset="ISO-8859-1">
+    <title>管理系统</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="container">
+    <h1>院系管理</h1>
+    <hr>
+    <h2>更改信息</h2>
+
+    <form action="#" th:action="@{/saveYx}" th:object="${yx}" method="POST">
+
+        <!-- Add hidden form field to handle update -->
+        <input type="hidden" th:field="*{id}" />
+
+        <input type="text" th:field="*{name}" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{num}" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{zn}" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{addr}" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{people}" class="form-control mb-4 col-4">
+
+        <button type="submit" class="btn btn-info col-2"> 更改</button>
+    </form>
+
+    <hr>
+
+    <a th:href="@{/yxindex}"> 返回院系信息列表</a>
+</div>
+</body>
+
+</html>

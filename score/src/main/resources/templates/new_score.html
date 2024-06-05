@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta charset="ISO-8859-1">
+    <title>学生管理系统</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="container">
+    <h1>学生成绩管理</h1>
+    <hr>
+    <h2>新增学生成绩</h2>
+
+    <form action="#" th:action="@{/saveScore}" th:object="${score}" method="POST">
+        <input type="text" th:field="*{name}" placeholder="名称" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{stuid}" placeholder="学号" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{type}" placeholder="科目" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{grade}" placeholder="班别" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{sc}" placeholder="成绩" class="form-control mb-4 col-4">
+
+        <button type="submit" class="btn btn-info col-2"> 保存</button>
+    </form>
+
+    <hr>
+
+    <a th:href="@{/scoreindex}"> 回到学生列表</a>
+</div>
+</body>
+
+</html>

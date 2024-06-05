@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta charset="ISO-8859-1">
+    <title>学生管理系统</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+
+<div class="container my-2">
+    <h1>教师信息</h1>
+
+    <a th:href="@{/showTeaForm}" class="btn btn-primary btn-sm mb-3"> 新增 </a>
+    <h1  class="text-primary"></h1>
+
+
+    <nav class="navbar navbar-light bg-light">
+        <form id="query-form" action="/query" method="get">
+            <h6 class="text-secondary">查找教师</h6><input type="text" id="name-input" name="inpname" placeholder="教师姓名">
+            <button type="button" class="btn btn-info"onclick="queryTea()">搜索</button>
+        </form>
+        <hr>
+
+        <a th:href="@{/index}"> 回到主页</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a th:href="@{/teaindex}"> 回到老师信息主页</a>
+        <script>
+            function queryTea() {
+                var goodsName = document.getElementById("name-input").value;
+                var url = "/queryTea" + encodeURIComponent(goodsName);
+                window.location.href = url;
+            }
+        </script>
+    </nav>
+
+    <table border="1" class="table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th>
+                <a th:href="@{'/pageTea/' + ${currentPage} + '?sortField=goodsName&sortDir=' + ${reverseSortDir}}">
+                    教师姓名</a>
+            </th>
+            <th>
+                <a th:href="@{'/pageTea/' + ${currentPage} + '?sortField=price&sortDir=' + ${reverseSortDir}}">
+                    教师性别</a>
+            </th>
+            <th>
+                <a th:href="@{'/pageTea/' + ${currentPage} + '?sortField=types&sortDir=' + ${reverseSortDir}}">
+                    手机号</a>
+            </th>
+            <th>
+                <a th:href="@{'/pageTea/' + ${currentPage} + '?sortField=types&sortDir=' + ${reverseSortDir}}">
+                    学科</a>
+            </th>
+            <th>
+                <a th:href="@{'/pageTea/' + ${currentPage} + '?sortField=types&sortDir=' + ${reverseSortDir}}">
+                    薪资信息</a>
+            </th>
+            <th> 功能 </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="tea : ${listTea}">
+            <td th:text="${tea.name}"></td>
+            <td th:text="${tea.sex}"></td>
+            <td th:text="${tea.phone}"></td>
+            <td th:text="${tea.sub}"></td>
+            <td th:text="${tea.salary}"></td>
+            <td> <a th:href="@{/showFormForUpdateTea/{id}(id=${tea.id})}" class="btn btn-primary">更新</a>
+                <a th:href="@{/deleteTea/{id}(id=${tea.id})}" class="btn btn-danger">删除</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <div th:if = "${totalPages > 1}">
+        <div class = "row col-sm-10">
+            <div class = "col-sm-3">
+                教师总数: [[${totalItems}]]
+            </div>
+            <div class = "col-sm-5">
+					<span th:each="i: ${#numbers.sequence(1, totalPages)}">
+						<a th:if="${currentPage != i}" th:href="@{'/pageTea/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+						<span th:unless="${currentPage != i}">[[${i}]]</span>  &nbsp; &nbsp;
+					</span>
+            </div>
+            <!--            <           <div class = "col-sm-1">&ndash;&gt;-->
+            <!--            <               <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">上一页</a>&ndash;&gt;-->
+            <!--            <               <span th:unless="${currentPage < totalPages}">Next</span>&ndash;&gt;-->
+            <!--            <            </div>&ndash;&gt;-->
+
+            <!--            <           <div class="col-sm-1">&ndash;&gt;-->
+            <!--            <               <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">下一页</a>&ndash;&gt;-->
+            <!--            <               <span th:unless="${currentPage < totalPages}">Last</span>&ndash;&gt;-->
+            <!--            <           </div>&ndash;&gt;-->
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

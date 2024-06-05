@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>学生成绩管理系统</title>
+    <style>
+            body{
+                background-image: url("/images/BingWallpaper.jpg");
+            }
+            a {
+
+                display: block;
+                margin-bottom: 10px;
+                cursor: pointer;
+                display: block;
+                text-align: center;
+                white-space: nowrap;
+                background: #0071e3;
+                color: #fff;
+                border-radius: 980px;
+                font-size: 20px;
+                line-height: 1.33337;
+                font-weight: 400;
+                letter-spacing: -.01em;
+                font-family: "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+                min-width: 23px;
+                padding-left: 11px;
+                padding-right: 11px;
+                padding-top: 4px;
+                padding-bottom: 4px;
+            }
+            .aButton{
+
+            }
+
+    </style>
+    <div style="margin: 0 auto; width: 50%;">
+        <div style="max-width: 100%; height: auto; display: block" >
+            <img src="/images/index2.jpg">
+        </div>
+        <div style="width:400px; height:auto; float:left; display:inline">
+            <img src="/images/index1.jpg">
+        </div>
+
+        <div style="width:400px; height:500px; float:right; display:inline " class="layui-form layui-form-pane lau-sign-form">
+            <a th:href="@{/scoreindex}"> 学生成绩列表</a>
+            <a th:href="@{/stuindex}">学生列表</a>
+            <a th:href="@{/teaindex}">老师列表</a>
+            <a th:href="@{/yxindex}">院系列表</a>
+        </div>
+
+    </div>
+</head>>
+</body>
+
+</html>
